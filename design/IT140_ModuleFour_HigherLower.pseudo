@@ -1,0 +1,65 @@
+# IT 140 Module Four Assignment
+# Higher/Lower Game Pseudocode
+#
+# This program allows Bella to play a higher/lower guessing game.
+# The game continues until the correct number is guessed.
+
+START hilow_game
+
+    # Establish a valid guessing range.
+    DISPLAY "Welcome to the higher/lower game, Bella!"
+
+    DISPLAY "Enter the lower bound:"
+    INPUT lower_bound
+
+    DISPLAY "Enter the upper bound:"
+    INPUT upper_bound
+
+    WHILE lower_bound >= upper_bound
+        DISPLAY "The lower bound must be less than the upper bound."
+        DISPLAY "Enter the lower bound:"
+        INPUT lower_bound
+        DISPLAY "Enter the upper bound:"
+        INPUT upper_bound
+    END WHILE
+
+    # Establish the number the player is trying to guess.
+    SET random_number = RANDOM number between lower_bound and upper_bound
+
+    # Play the game.
+    DISPLAY "Great, now guess a number between", lower_bound, "and", upper_bound
+    INPUT guess
+
+    # Validate the player's guess.
+    WHILE guess < lower_bound OR guess > upper_bound
+        DISPLAY "Invalid guess. Please enter a number within the range."
+        INPUT guess
+    END WHILE
+
+    # Continue playing until the correct number is guessed.
+    WHILE guess != random_number
+
+        # Compare the guess and provide feedback.
+        IF guess < random_number THEN
+            DISPLAY "Nope, too low."
+        ELSE IF guess > random_number THEN
+            DISPLAY "Nope, too high."
+        END IF
+
+        # Obtain and validate another guess.
+        DISPLAY "Guess another number:"
+        INPUT guess
+
+        WHILE guess < lower_bound OR guess > upper_bound
+            DISPLAY "Invalid guess. Please enter a number within the range."
+            INPUT guess
+        END WHILE
+
+    END WHILE
+
+    DISPLAY "You got it!"
+
+END hilow_game
+
+# === References ===
+# No external references used.
